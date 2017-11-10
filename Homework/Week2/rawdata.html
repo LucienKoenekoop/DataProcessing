@@ -1,7 +1,22 @@
+<!-- Name: Lucien Koenekoop
+	 Student Number: 10531661
+
+	 Program that converts raw data from the KNMI wbsite to
+	 plot a corresponding line graph
+
+	 reference: https://data.mprog.nl/homework/javascript
+	 reference: http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi
+	 reference: https://www.w3schools.com
+	 reference: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
+-->
+
 <!DOCTYPE html>
 
 <html>
 	<head>
+		<h4>Lucien Koenekoop</h4>
+		<h1>Lingraph with JavaScript</h1>
+		<a href="http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi">http://projects.knmi.nl/klimatologie/daggegevens/selectie.cgi</a>
 	</head>
 	<body>
 		<script type="text/javascript">
@@ -90,9 +105,9 @@
 
 				// set values for screen range pixels
 				var range_xmin = 100;
-				var range_xmax = 500;
-				var range_ymin = 20;
-				var range_ymax = 120;
+				var range_xmax = 700;
+				var range_ymin = 50;
+				var range_ymax = 500;
 
 				// fits the domain in the range for the x and y directions
 				var x_transform = createTransform(xRange, [range_xmin, range_xmax]);
@@ -100,6 +115,8 @@
 
 				// calls the canvas interface to draw objects onto the canvas element
 				var canvas = document.getElementById('myCanvas');
+				canvas.width = 700;
+				canvas.height = 700;
 				var ctx = canvas.getContext('2d');
 
 				// set the graph line at the starting point
@@ -138,8 +155,8 @@
 
 				// places title above the graph
 				var Title = "Average temperature (ºC) in De Bilt, 1994"
-				ctx.font = "15px bold";
-				ctx.fillText(Title, 120, 10);
+				ctx.font = "30px bold";
+				ctx.fillText(Title, 120, 40);
 				
 				// finishes the drawing of the canvas
 				ctx.stroke();
