@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			// arrays to be filled with all data and temperatures
+			data = [];
+			temp = [];
+			
+			// set values for minimum and maximum temperature
+			var mintemp = null;
+			var maxtemp = null;
+
+
+			// annonymous function to be called when HTML is loaded
+			window.onload = function() {
+
+				// get the data from the textarea and splits the rows
+				var list = document.getElementById("rawdata").value;
+				var rows = list.split("\n");
+
+				// iterates ver all the rows
+				for (i = 1; i < rows.length - 1; i++) 
+					{
+
+						// splits the rows and gets a date column and a temperature column
+						var column = rows[i].split(",");
+
+						var datecolumn = column[0].trim();
+						var tempcolumn = parseInt(column[1].trim());
+
+						// evaluates the highest and the lowest temperatures
+						if (tempcolumn < mintemp) {
+							mintemp = tempcolumn
+						}
+						if (tempcolumn > maxtemp) {
+							maxtemp = tempcolumn
+						}
+
+						// fills the temperature array
+						temp.push(tempcolumn);
+
+						// subtracs the year, month and day from the date 
+						var year = parseInt(datecolumn.substring(0, 4));
+						var month = parseInt(datecolumn.substring(4, 6));
+						var day = parseInt(datecolumn.substring(6));
+
+						// calculates the amount of miliseconds in a day
+						var milisec = 1000 * 60 * 60 * 24;
+
+						// adds a new day for every date in miliseconds
+						date = new Date(year, month - 1, day) / milisec;
+
+						// evaluates the first and last day
+						var minRange;
+						var maxRange;
+						if (i == 1) {
+							var minRange = date;
+						}
+						if (i == (rows.length - 2)) {	
+							var maxRange = date;
+						}
+
+						// fills the date array
+						data.push(date);
+					}
+
+				// sets the domain for the x direction of the dates and the y direction of the temperatures
+				var yDomain = [maxtemp, mintemp];
+				var xRange = [minRange, maxRange];
+
+				// defines transformation formula to fit the domain values into the screen range
+				function createTransform(domain, range){
+					var domain_min = domain[0];
+					var domain_max = domain[1];
+					var range_min = range[0];
+					var range_max = range[1];
+
+					var aplha = (range_max - range_min) / (domain_max - domain_min);
+					var beta = range_max - aplha * domain_max;
+
+					return function(x){
+						return aplha * x + beta;
+					}
+
+				}
+
+				// set values for screen range pixels
+				var range_xmin = 100;
+				var range_xmax = 500;
+				var range_ymin = 20;
+				var range_ymax = 120;
+
+				// fits the domain in the range for the x and y directions
+				var x_transform = createTransform(xRange, [range_xmin, range_xmax]);
+				var y_transform = createTransform(yDomain, [range_ymin, range_ymax]);
+
+				// calls the canvas interface to draw objects onto the canvas element
+				var canvas = document.getElementById('myCanvas');
+				var ctx = canvas.getContext('2d');
+
+				// set the graph line at the starting point
+				ctx.beginPath();
+				ctx.moveTo(x_transform(data[0]), y_transform(temp[0]));
+
+				// iterates over all the data points and connects them with a line
+				for (i = 0; i < data.length; i++) {
+					 
+					ctx.lineTo(x_transform(data[i]), y_transform(temp[i]));
+				} 
+
+				// sets axis margins to the graph
+				ctx.moveTo(range_xmin,range_ymin);
+				ctx.lineTo(range_xmin,range_ymax);
+				ctx.lineTo(range_xmax,range_ymax);
+
+				// lists the months and places them along the x-axis of the graph
+				var Months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"] 
+				for (i = 0; i < 12; i++) {
+					ctx.moveTo(range_xmin + i * ((range_xmax - range_xmin) / 12),range_ymax);
+					ctx.lineTo(range_xmin + i * ((range_xmax - range_xmin) / 12),range_ymax + 5);
+					ctx.font = "10px";
+					ctx.fillText(Months[i], range_xmin + i * ((range_xmax - range_xmin) / 12), range_ymax + 15 ,[15]);
+				}
+
+				// lists temperatures and places along the y-axis
+				var Temps = ["-5", "0", "5", "10", "15", "20", "25"];
+
+				for (i = 7; i > 0; i--) {
+					ctx.moveTo(range_xmin,range_ymin + i * ((range_ymax - range_ymin) / 7))
+					ctx.lineTo(range_xmin - 5,range_ymin + i * ((range_ymax - range_ymin) / 7))
+					ctx.font = "10px";
+					ctx.fillText(Temps[7-i], range_xmin - 20,range_ymin + i * ((range_ymax - range_ymin) / 7) + 2);
+				}
+
+				// places title above the graph
+				var Title = "Average temperature (ºC) in De Bilt, 1994"
+				ctx.font = "15px bold";
+				ctx.fillText(Title, 120, 10);
+				
+				// finishes the drawing of the canvas
+				ctx.stroke();
+			}	
+			
+			
+		</script>
+		<canvas id="myCanvas" width="700" heigth="700"></canvas>
+		<textarea id="rawdata" name="hide" style="display:none;">
+			#date,maxtemp
+			19940101,31
+  			19940102,47
+  			19940103,62
+  			19940104,64
+  			19940105,57
+  			19940106,64
+  			19940107,46
+  			19940108,27
+  			19940109,20
+  			19940110,45
+  			19940111,52
+  			19940112,90
+  			19940113,94
+  			19940114,72
+  			19940115, 54
+  			19940116, 19
+  			19940117, -6
+  			19940118, 25
+  			19940119, 25
+  			19940120, 30
+  			19940121, 52
+  			19940122, 73
+  			19940123, 77
+  			19940124, 43
+  			19940125, 84
+  			19940126, 60
+  			19940127, 87
+  			19940128, 39
+  			19940129, 43
+  			19940130, 73
+  			19940131, 57
+  			19940201, 53
+  			19940202, 39
+  			19940203, 24
+  			19940204, 56
+  			19940205, 43
+  			19940206, 40
+  			19940207, 40
+  			19940208, 43
+  			19940209, 46
+  			19940210, 51
+  			19940211, 24
+  			19940212,  6
+  			19940213,-31
+  			19940214,-44
+  			19940215, -4
+  			19940216,  6
+  			19940217,-20
+  			19940218,-16
+  			19940219,-24
+  			19940220,-47
+  			19940221,-58
+  			19940222,-35
+  			19940223, -4
+  			19940224, -3
+  			19940225,  8
+  			19940226, 68
+  			19940227, 75
+  			19940228, 79
+  			19940301, 67
+  			19940302, 48
+  			19940303, 57
+  			19940304, 61
+  			19940305, 74
+  			19940306, 67
+  			19940307, 93
+  			19940308, 98
+  			19940309, 88
+  			19940310, 65
+  			19940311, 50
+  			19940312, 63
+  			19940313, 82
+  			19940314, 95
+  			19940315, 68
+  			19940316, 59
+  			19940317, 50
+  			19940318, 58
+  			19940319, 55
+  			19940320, 49
+  			19940321, 39
+  			19940322, 41
+  			19940323,110
+  			19940324, 95
+  			19940325, 87
+  			19940326, 53
+  			19940327, 46
+  			19940328, 88
+  			19940329,114
+  			19940330,135
+  			19940331,114
+  			19940401, 90
+  			19940402, 53
+  			19940403, 58
+  			19940404, 55
+  			19940405, 38
+  			19940406, 50
+  			19940407, 50
+  			19940408, 69
+  			19940409, 44
+  			19940410, 44
+  			19940411, 91
+  			19940412, 87
+  			19940413, 79
+  			19940414, 61
+  			19940415, 63
+  			19940416, 79
+  			19940417, 61
+  			19940418, 56
+  			19940419, 48
+  			19940420, 70
+  			19940421, 78
+  			19940422,102
+  			19940423,146
+  			19940424,128
+  			19940425,104
+  			19940426,110
+  			19940427,132
+  			19940428,132
+  			19940429,143
+  			19940430,130
+  			19940501, 83
+  			19940502, 89
+  			19940503,138
+  			19940504,120
+  			19940505,109
+  			19940506,115
+  			19940507,161
+  			19940508,116
+  			19940509, 99
+  			19940510,106
+  			19940511,146
+  			19940512,176
+  			19940513,163
+  			19940514,168
+  			19940515,142
+  			19940516,127
+  			19940517,128
+  			19940518,122
+  			19940519,121
+  			19940520,126
+  			19940521,143
+  			19940522,134
+  			19940523,121
+  			19940524,130
+  			19940525,124
+  			19940526,113
+  			19940527,107
+  			19940528,104
+  			19940529, 88
+  			19940530, 92
+  			19940531,122
+  			19940601,176
+  			19940602,158
+  			19940603,139
+  			19940604,109
+  			19940605,115
+  			19940606,125
+  			19940607,135
+  			19940608,116
+  			19940609,107
+  			19940610,115
+  			19940611,116
+  			19940612,131
+  			19940613,136
+  			19940614,147
+  			19940615,136
+  			19940616,126
+  			19940617,133
+  			19940618,160
+  			19940619,160
+  			19940620,161
+  			19940621,169
+  			19940622,162
+  			19940623,142
+  			19940624,192
+  			19940625,194
+  			19940626,188
+  			19940627,179
+  			19940628,221
+  			19940629,190
+  			19940630,173
+  			19940701,199
+  			19940702,234
+  			19940703,229
+  			19940704,218
+  			19940705,175
+  			19940706,166
+  			19940707,144
+  			19940708,167
+  			19940709,184
+  			19940710,195
+  			19940711,231
+  			19940712,253
+  			19940713,245
+  			19940714,202
+  			19940715,196
+  			19940716,199
+  			19940717,191
+  			19940718,189
+  			19940719,209
+  			19940720,215
+  			19940721,227
+  			19940722,233
+  			19940723,240
+  			19940724,266
+  			19940725,236
+  			19940726,232
+  			19940727,244
+  			19940728,217
+  			19940729,205
+  			19940730,236
+  			19940731,243
+  			19940801,188
+  			19940802,200
+  			19940803,235
+  			19940804,258
+  			19940805,217
+  			19940806,209
+  			19940807,188
+  			19940808,179
+  			19940809,182
+  			19940810,198
+  			19940811,199
+  			19940812,161
+  			19940813,152
+  			19940814,136
+  			19940815,131
+  			19940816,158
+  			19940817,145
+  			19940818,156
+  			19940819,166
+  			19940820,157
+  			19940821,166
+  			19940822,185
+  			19940823,187
+  			19940824,175
+  			19940825,167
+  			19940826,164
+  			19940827,163
+  			19940828,154
+  			19940829,149
+  			19940830,153
+  			19940831,170
+  			19940901,168
+  			19940902,154
+  			19940903,151
+  			19940904,164
+  			19940905,148
+  			19940906,132
+  			19940907,126
+  			19940908,135
+  			19940909,127
+  			19940910,128
+  			19940911,126
+  			19940912,154
+  			19940913,144
+  			19940914,128
+  			19940915,124
+  			19940916,117
+  			19940917,115
+  			19940918,131
+  			19940919,124
+  			19940920,109
+  			19940921,132
+  			19940922,125
+  			19940923,139
+  			19940924,146
+  			19940925,148
+  			19940926,143
+  			19940927,137
+  			19940928,129
+  			19940929,139
+  			19940930,139
+  			19941001,130
+  			19941002,136
+  			19941003, 96
+  			19941004, 60
+  			19941005, 79
+  			19941006, 93
+  			19941007, 84
+  			19941008, 79
+  			19941009, 89
+  			19941010, 92
+  			19941011, 93
+  			19941012, 77
+  			19941013,104
+  			19941014,100
+  			19941015, 94
+  			19941016,103
+  			19941017, 58
+  			19941018, 53
+  			19941019, 75
+  			19941020, 75
+  			19941021, 97
+  			19941022,127
+  			19941023,123
+  			19941024,101
+  			19941025, 96
+  			19941026, 82
+  			19941027, 76
+  			19941028, 74
+  			19941029,84
+  			19941030,139
+  			19941031,131
+  			19941101,102
+  			19941102,67
+  			19941103,116
+  			19941104,139
+  			19941105,133
+  			19941106,123
+  			19941107,111
+  			19941108,101
+  			19941109,95
+  			19941110,105
+  			19941111,106
+  			19941112,97
+  			19941113,113
+  			19941114,140
+  			19941115,126
+  			19941116,93
+  			19941117,93
+  			19941118,97
+  			19941119,114
+  			19941120,135
+  			19941121,88
+  			19941122,80
+  			19941123,106
+  			19941124,92
+  			19941125,70
+  			19941126,112
+  			19941127,99
+  			19941128,84
+  			19941129,63
+  			19941130,55
+  			19941201,31
+  			19941202,20
+  			19941203,80
+  			19941204,96
+  			19941205,95
+  			19941206,74
+  			19941207,69
+  			19941208,86
+  			19941209,55
+  			19941210,64
+  			19941211,129
+  			19941212,126
+  			19941213,99
+  			19941214,29
+  			19941215,0
+  			19941216,30
+  			19941217,29
+  			19941218,60
+  			19941219,53
+  			19941220,31
+  			19941221,19
+  			19941222,-10
+  			19941223,-15
+  			19941224,-41
+  			19941225,-28
+  			19941226,17
+  			19941227,93
+  			19941228,125
+  			19941229,109
+  			19941230,67
+  			19941231,50
+ 		</textarea>
+	</body>
+</html>
+
+
+
+
+
