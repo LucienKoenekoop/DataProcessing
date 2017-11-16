@@ -12,8 +12,9 @@ jsonFile = open('uefa.json', 'w')
 # creates labels for the csv's
 labels = ("Country", "Pts")
 reader = csv.DictReader(csvFile, labels)
-
+data = []
 # writes the json file
 for row in reader:
-	json.dump(row, jsonFile)
-	jsonFile.write('\n')
+	data.append(row)
+json.dump(data, jsonFile)
+jsonFile.write('\n')
