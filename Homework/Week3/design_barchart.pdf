@@ -1,0 +1,7 @@
+The margin is determined to fit y-axis values of for the points and the label "Points" and x-axis names of the countries. 
+
+The y-axis values are chosen with intervals of 10 because the bars are of such heights that in this way their values can easily be estimated. This axis does have a label so it is more clearly what these values represent.
+
+The x-axis values are the names of the countries. This axis does not have a label because it is needless to say what is represented. The values are rotated 45 degrees so that it is easier to read them without tilting your head too much. 
+
+The bars are filled with the midnightblue color for it is easy on the eyes and clearly visible and the bars do not contain a value judgment so this doesn't need to be visualized. The bar hover color is crimson red, this gives a clear contrast with the midnightblue so it is obvious your mouse is over that bar, and also the tooltip has the same color, with clearly readable white text inside it.

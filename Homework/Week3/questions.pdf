@@ -1,0 +1,5 @@
+1. D3 allows you to bind arbitrary data to a Document Object Model (DOM), and then apply data-driven transformations to the document. D3 employs a declarative approach, operating on arbitrary sets of nodes called selections. selectAll selects all nodes and select selects individual nodes for manipulation.
+
+2. d stands for the current data element, i stands for the index of the current date element.
+
+3. 

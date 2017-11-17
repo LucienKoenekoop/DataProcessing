@@ -1,5 +1,6 @@
 #header{
   text-indent: 400px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .bar{
@@ -11,7 +12,8 @@
 }
 
 .axis {
-  font: 10px sans-serif;
+  font: 12px sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 }
 
 .axis path,
@@ -23,18 +25,17 @@
 
 .d3-tip {
   line-height: 1;
-  /*font-weight: bold;*/
   padding: 12px;
   background: rgba(220, 20, 60, 1);
   color: #fff;
   border-radius: 2px;
 }
 
-/* Creates a small triangle extender for the tooltip */
 .d3-tip:after {
   box-sizing: border-box;
   display: inline;
   font-size: 10px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
   width: 100%;
   line-height: 1;
   color: rgba(220, 20, 60, 1);
@@ -43,7 +44,6 @@
   text-align: center;
 }
 
-/* Style northward tooltips differently */
 .d3-tip.n:after {
   margin: -1px 0 0 0;
   top: 100%;
