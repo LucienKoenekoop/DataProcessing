@@ -1,5 +1,14 @@
-1. D3 allows you to bind arbitrary data to a Document Object Model (DOM), and then apply data-driven transformations to the document. D3 employs a declarative approach, operating on arbitrary sets of nodes called selections. selectAll selects all nodes and select selects individual nodes for manipulation.
+1. D3 verbind data aan de DOM en voert dan aan de hand van die data transformaties aan de document uit. D3 gebruikt een verklarende benadering, die werkt op sets van nodes die selecties worden genoemd. "selectAll" selecteert alle nodes en "select" selecteert individuele nodes voor manipulatie.
 
-2. d stands for the current data element, i stands for the index of the current date element.
+2. "d" staat voor het huidige data element en "i" staat voor de index van het huidige data element
 
-3. 
+3.
+
+4. "append" breidt het HTML element uit waarop het betrekking heeft. 
+"enter" maakt de eerste koppeling van gegevens aan elementen en maakt één element voor elk gegevenselement uit de dataset.
+Wanneer een andere dataset benodigd is, verwijdert "exit" de elementen die niet langer nodig zijn.
+"update" kan elementen selecteren en bepaalde waardes van die elementen veranderen, of updaten.
+
+5. HTML is voornamelijk begrensd aan rechthoekige vormen terwijl SVG krachtigere vormen ondersteunt o.a. curves.
+
+6. De assen en de bars. 
