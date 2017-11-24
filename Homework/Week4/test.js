@@ -1,7 +1,15 @@
+/*
+Lucien Koenekoop
+10531661
+
+Data Processing
+Week 4
+*/
+
 window.onload = function () {
 
 	// loads the svg
-	d3.xml("test1.svg", "image/svg+xml", function(error, xml) {
+	d3.xml("test.svg", "image/svg+xml", function(error, xml) {
 	    if (error) throw error;
 	    document.body.appendChild(xml.documentElement);
 

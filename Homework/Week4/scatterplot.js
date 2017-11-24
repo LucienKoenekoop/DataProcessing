@@ -1,3 +1,11 @@
+/*
+Lucien Koenekoop
+10531661
+
+Data Processing
+Week 4
+*/
+
 window.onload = function () {
 
 	var margin = {top: 50, right: 400, bottom: 150, left: 100},
@@ -23,6 +31,7 @@ window.onload = function () {
 	var yAxis = d3.svg.axis()
 	    .scale(y)
 	    .tickSize(-width)
+	    .tickFormat(function(d) { return d + " %"})
 	    .orient("left");
 
 	var tip = d3.tip()
