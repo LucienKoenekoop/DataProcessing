@@ -6,6 +6,7 @@ Data Processing
 Week 4
 */
 
+/* Text font and centers the header above the scatterplot */
 #header{
   text-indent: 200px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
