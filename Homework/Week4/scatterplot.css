@@ -1,0 +1,92 @@
+#header{
+  text-indent: 200px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#body{
+  font: 12px sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+#link{
+  font:10px sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif; 
+}
+
+.label {
+  font-size: 15px;
+}
+
+.legend{
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.legend text,
+.axis text {
+  font-size: 13px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  fill: #333;
+}
+
+.axis {
+  font: 11px sans-serif;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke-width:1px;
+  stroke: #e7e7e7;
+}
+
+circle {
+  stroke: #fff;
+}
+
+.dot {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.dot text {
+  opacity: 0;
+  pointer-events: none;
+  font-size: 12px;
+}
+
+.dot:hover text {
+  opacity: 1;
+}
+
+.dot:hover circle {
+  fill-opacity: 1;
+}
+
+.d3-tip {
+  line-height: 1;
+  padding: 12px;
+  background: rgba(220, 20, 60, 1);
+  color: #fff;
+  border-radius: 2px;
+}
+
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+  width: 100%;
+  line-height: 1;
+  color: rgba(220, 20, 60, 1);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
