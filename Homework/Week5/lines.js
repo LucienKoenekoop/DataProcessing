@@ -189,7 +189,6 @@ window.onload = function () {
         	.style("opacity", 1);
         });
 
-
     	// add mouse-over-effects to the plot
 	    var mouseG = svg.append("g")
       		.attr("class", "mouse-over-effects");
@@ -275,10 +274,7 @@ window.onload = function () {
 	            }
 	            
 	            d3.select(this).select('text')
-	              .text(y.invert(pos.y).toFixed(2) + "\n" + x.invert(pos.x))
-	              // .attr("fill", "midnightblue")
-	              // .style("font-size", "20px")
-	              // .style("font-weight", "bold");
+	              .text(y.invert(pos.y).toFixed(2) + "˚C\n" + x.invert(pos.x))
 	              
 	            return "translate(" + mouse[0] + "," + pos.y +")";
 	        });
