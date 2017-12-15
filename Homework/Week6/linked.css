@@ -6,9 +6,11 @@ Data Processing
 Week 6
 */
 
-body { font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;}
+body { 
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+}
 
-/* Text font and centers the header above the scatterplot */
+/* Text font and centers the header */
 #headerr {
   text-indent: 200px;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -45,40 +47,6 @@ path:hover {
   fill: crimson;
 }
 
-.slider {
-  position: relative;
-  top: 40px;
-  left: 40px;
-}
-
-.slider-tray {
-  position: absolute;
-  width: 100%;
-  height: 6px;
-  border: solid 1px #ccc;
-  border-top-color: #aaa;
-  border-radius: 4px;
-  background-color: #f0f0f0;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
-}
-
-.slider-handle {
-  position: absolute;
-  top: 3px;
-}
-
-.slider-handle-icon {
-  width: 14px;
-  height: 14px;
-  border: solid 1px #aaa;
-  position: absolute;
-  border-radius: 10px;
-  background-color: #fff;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
-  top: -7px;
-  left: -7px;
-}
-
 .axis {
   font: 12px sans-serif;
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
@@ -90,75 +58,3 @@ path:hover {
   stroke: #000;
   shape-rendering: crispEdges;
 }
-
-.d3-tip {
-  line-height: 1;
-  padding: 12px;
-  background: rgba(220, 20, 60, 1);
-  color: #fff;
-  border-radius: 2px;
-}
-
-.d3-tip:after {
-  box-sizing: border-box;
-  display: inline;
-  font-size: 10px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  width: 100%;
-  line-height: 1;
-  color: rgba(220, 20, 60, 1);
-  content: "\25BC";
-  position: absolute;
-  text-align: center;
-}
-
-.d3-tip.n:after {
-  margin: -1px 0 0 0;
-  top: 100%;
-  left: 0;
-}
-
-/*path { 
-    stroke: steelblue;
-    stroke-width: 2;
-    fill: none;
-}
-
-.axis text {
-  font-size: 13px;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-  fill: #333;
-}
-
-.axis {
-  font: 11px sans-serif;
-  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
-}
-
-.axis path,
-.axis line {
-  fill: none;
-  stroke-width:1px;
-  stroke: #e7e7e7;
-  shape-rendering: crispEdges;
-}
-
-.x.axis path {
-  display: none;
-}
-
-.line {
-  fill: none;
-  stroke: steelblue;
-  stroke-width: 1.5px;
-}
-
-.line text {
-  opacity: 0;
-  pointer-events: none;
-  font-size: 12px;
-}
-
-.line:hover {
-  opacity: 0.1;
-}*/

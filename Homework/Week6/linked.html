@@ -4,6 +4,8 @@ Lucien Koenekoop
 
 Data Processing
 Week 6
+
+reference: https://www.w3schools.com/bootstrap/tryit.asp?filename=trybs_ref_js_modal&stacked=h
 -->
 
 <!DOCTYPE html>
@@ -13,49 +15,37 @@ Week 6
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 	  <script src="d3.js"></script>
     <script src="http://d3js.org/queue.v1.min.js"></script>
   	<script src="linked.js"></script>
   	<script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
   	<link rel="stylesheet" href="linked.css">
-  	<h2 id="headerr">Renwable Energy in Europe</h2>
-  	<a id="linkk" href="http://ec.europa.eu/eurostat/statistics-explained/index.php/Renewable_energy_statistics">Bron 1</a>
+    <title>Renewable Energy in Europe</title>
 </head>
 <body>
+  <h2 id="headerr">Renwable Energy in Europe</h2>
+  <a id="linkk" href="http://ec.europa.eu/eurostat/statistics-explained/index.php/Renewable_energy_statistics">Bron 1</a>
 	<p id="name">Lucien Koenekoop 10531661</p>
-  <div class="slider"></div>
   <div class="container">
-  <!-- Trigger the modal with a button -->
-  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Description</button>
-
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title">Renewable Energy</h4>
-        </div>
-        <div class="modal-body">
-          <p>The aim of this webpage is to show insight into the progress of European countries in renewing their energy surplus. The page shows you a barchart of the amount of renewable energy relative to the total energy of a country in the year 2015. You can use the slider to go back through the years up to 2004. In this way you can see the progress of each country made in renewing their energy surplus.
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Description</button>
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Renewable Energy</h4>
+          </div>
+          <div class="modal-body">
+            <p>The aim of this webpage is to show insight into the progress of European countries in renewing their energy surplus. The page shows you a barchart of the amount of renewable energy relative to the total energy of a country in the year 2015. You can use the slider to go back through the years up to 2004. In this way you can see the progress of each country made in renewing their energy surplus.
             Below the barchart you can see an interactive map of Europe. When you click on an individual country, the barchart shows you the distribution of the total renewable energy of that country over the different energy sources, again of the year 2015. However, the slider won't affect the barchart this time.
-            To see the data of another country, you will have to click on the current selected country, and then next on the preferred country. </p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            To see the data of another country, you will have to click on the current selected country, and then next on the preferred country.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-      
     </div>
   </div>
-  
-</div>
 </body>
-
-<!-- <script data-require="d3@3.5.3" data-semver="3.5.3" src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.3/d3.js"></script> -->
-<!-- <script src="//code.jquery.com/jquery-1.10.2.js"></script> -->
-<!-- <script src="http://d3js.org/topojson.v1.min.js"></script> -->
-<!-- <script src="http://d3js.org/d3.geo.projection.v0.min.js"></script> -->
